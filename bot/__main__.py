@@ -10,7 +10,7 @@ mrkup=Ikm([
 
 @app.on_message(filters.command(["start", "help"]))
 async def start(_, message):
-    text = f"*Hi! {message.from_user.first_name}*\n\n*I am a Simple url bypasser bot*\n\n*Just Send me a link and Ill bypass it for you!*"
+    text = f"**Hi! {message.from_user.first_name}**\n\n**I am a Simple url bypasser bot**\n\n**Just Send me a link and Ill bypass it for you!**"
     await message.reply_text(text, reply_markup=mrkup)
 
 
