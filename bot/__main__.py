@@ -6,8 +6,7 @@ from pyrogram.types import InlineKeyboardButton as Ikb, InlineKeyboardMarkup as 
 telegraph_url=""
 telegrapho_url=""
 mrkup=Ikm([
-                [Ikb(text="📞Support", url="t.me/ShinobuSupport"),
-                 Ikb(text="⚙️Supported Link", url=telegraph_url)]
+                [Ikb(text="📞Support", url="t.me/ShinobuSupport"), Ikb(text="⚙️Supported Link", url=telegraph_url)],
                 [Ikb(text="How It Works", url=telegrapho_url)]
              ])
 
