@@ -5,7 +5,6 @@ import PyBypass as bypasser
 
 @app.on_message(filters.command('bypass'))
 def bypass(_, msg):
-    
     if msg.reply_to_message:
         url = msg.reply_to_message.text
     else:
@@ -15,7 +14,7 @@ def bypass(_, msg):
                 name = msg.text.split()[2]
         except:
             return msg.reply_text("Please Reply to a Url")
-    
+
     x = msg.reply(f"Bypassing {url}...")
 
     try:
@@ -24,7 +23,6 @@ def bypass(_, msg):
             bypassed = bypasser.bypass(url, name=name)
     except Exception as e:
         return msg.reply(e)
-    
+
     x.delete()
     msg.reply_text(f"**BYPASSED URL:** `{bypassed}`")
-    
