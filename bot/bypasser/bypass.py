@@ -10,7 +10,7 @@ def bypass(_, msg):
     else:
         try:
             url = message.text.split[1]
-        else:
+        except:
             return message.reply_text("Please Reply to a Url")
     
     try:
