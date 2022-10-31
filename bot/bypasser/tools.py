@@ -29,7 +29,7 @@ def tgupload(_, msg):
     else:
         try:
             address = msg.text.split()[1]
-            x = message.reply_text("Uploading to telegram...")
+            x = msg.reply_text("Uploading to telegram...")
         except:
             return msg.reply_text("Please Reply to a Url")
         
