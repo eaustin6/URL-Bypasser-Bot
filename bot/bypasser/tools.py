@@ -20,8 +20,7 @@ def rename(_, message):
 
 
 
-
-@pbot.on_message(filters.command("tgupload"))
+@app.on_message(filters.command("tgupload"))
 def tgupload(_, message):
     msg = message.text.split()
     try:
