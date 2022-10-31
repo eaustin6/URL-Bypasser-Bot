@@ -10,7 +10,9 @@ def bypass(_, msg):
         url = msg.reply_to_message.text
     else:
         try:
-            url = msg.text.split[1]
+            url = msg.text.split()[1]
+            try:
+                name = msg.text.split()[2]
         except:
             return msg.reply_text("Please Reply to a Url")
     
@@ -18,9 +20,11 @@ def bypass(_, msg):
 
     try:
         bypassed = bypasser.bypass(url)
+        if name:
+            bypassed = bypasser.bypass(url, name=name)
     except Exception as e:
         return msg.reply(e)
     
     x.delete()
-    msg.reply_text(bypassed)
+    msg.reply_text(f"**BYPASSED URL:** `{bypassed}`")
     
