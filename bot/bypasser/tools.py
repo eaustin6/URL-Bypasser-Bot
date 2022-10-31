@@ -26,13 +26,14 @@ def rename(_, message):
 def tgupload(_, msg):
     if msg.reply_to_message:
         address = msg.reply_to_message.text
+        
     else:
         try:
             address = msg.text.split()[1]
-            x = msg.reply_text("Uploading to telegram...")
         except:
             return msg.reply_text("Please Reply to a Url")
-        
+    
+    x = msg.reply_text("Uploading to telegram...")
     try:
         if address.startswith("http"):
             if address.endswith(".jpg") or address.endswith(".png") or address.endswith(".jpeg"):
