@@ -1,0 +1,44 @@
+name : aAniRobot
+
+on:
+    schedule:
+      - cron: "0 */6 * * *"
+    push:
+      branches: [ main ]
+
+env:
+  ID: ${{secrets.ID}}
+  HASH: ${{secrets.HASH}}
+  TOKEN: ${{secrets.TOKEN}}
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+       - uses: actions/checkout@v2
+       - uses: styfle/cancel-workflow-action@0.9.0
+       - name: Cancel Previous Runs
+         uses: styfle/cancel-workflow-action@0.9.1
+         with:
+              access_token: ${{ github.token }}
+
+       - name: Set up Python 3.9
+         uses: actions/setup-python@v2.2.2
+         with:
+           python-version: 3.9
+
+       - name: cloning repo and install
+         continue-on-error: true
+         run: |
+           git clone https://${{ secrets.NAME }}:${{ secrets.GIT_TOKEN }}@github.com/ItzKakarotto/URL-Bypasser-Bot URL-Bypasser-Bot && cd URL-Bypasser-Bot && pip3 install -r requirements.txt
+           pwd
+       - name: Running
+         timeout-minutes: 350
+         continue-on-error: true
+         run: |
+           curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -
+           pwd
+           cd URL-Bypasser-Bot
+           python3 -m bot
