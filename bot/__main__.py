@@ -3,11 +3,9 @@ from pyrogram import filters
 from pyrogram.types import Message
 from pyrogram.types import InlineKeyboardButton as Ikb, InlineKeyboardMarkup as Ikm
 
-telegraph_url=""
-telegrapho_url=""
 mrkup=Ikm([
-                [Ikb(text="📞Support", url="t.me/ShinobuSupport"), Ikb(text="⚙️Supported Link", url=telegraph_url)],
-                [Ikb(text="How It Works", url=telegrapho_url)]
+                [Ikb(text="📞Support", url="t.me/ShinobuSupport"), Ikb(text="⚙️Supported Link", url="https://telegra.ph/Supported-Website-Links-10-31")],
+                [Ikb(text="How It Works", url="https://github.com/sanjit-sinha/PyBypass/")]
              ])
 
 @app.on_message(filters.command(["start", "help"]))
