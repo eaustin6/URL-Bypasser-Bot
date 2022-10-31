@@ -6,6 +6,8 @@ from pyrogram import filters
 
 @app.on_message(filters.command('rename'))
 def rename(_, message):
+    if not message.reply_to_message:
+        message.reply("Please reply to a file/document")
     try:
         filename = message.text.replace(message.text.split(" ")[0], "")
     except Exception as e:
