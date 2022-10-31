@@ -25,7 +25,7 @@ def bypass(_, msg):
 
     try:
         bypassed = bypasser.bypass(url)
-        if name:
+        if nam:
             bypassed = bypasser.bypass(url, name=nam)
     except Exception as e:
         return msg.reply(e)
