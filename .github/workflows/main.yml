@@ -38,7 +38,6 @@ jobs:
          timeout-minutes: 350
          continue-on-error: true
          run: |
-           curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -
            pwd
            cd URL-Bypasser-Bot
            python3 -m bot
