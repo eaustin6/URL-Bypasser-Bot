@@ -15,4 +15,5 @@ sharerepw_xsrf_token, sharerpw_larvel_token = "", ""
 print("[INFO] Starting Pyrogram Instance")
 app = Client("app", bot_token=BOT_TOKEN, 
                     api_id=API_ID,
-                    api_hash=API_HASH)
+                    api_hash=API_HASH,
+                    plugins=dict(root=bypasser/"))
