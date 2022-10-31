@@ -21,14 +21,16 @@ def rename(_, message):
 
 
 @app.on_message(filters.command("tgupload"))
-def tgupload(_, message):
-    msg = message.text.split()
-    try:
-        address = msg[1]
-        x = message.reply_text("Uploading to telegram...")
-    except:
-        message.reply_text("Format: /tgupload <link/path>")
-        return
+def tgupload(_, msg):
+    if msg.reply_to_message:
+        address = msg.reply_to_message.text
+    else:
+        try:
+            address = msg.text.split()[1]
+            x = message.reply_text("Uploading to telegram...")
+        except:
+            return msg.reply_text("Please Reply to a Url")
+        
     try:
         if address.startswith("http"):
             if address.endswith(".jpg") or address.endswith(".png") or address.endswith(".jpeg"):
