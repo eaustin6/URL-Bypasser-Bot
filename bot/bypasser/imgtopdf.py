@@ -25,6 +25,6 @@ def convertPDF(_, message):
         save(_, flnm)
         
     print("After", os.listdir())
-    with open(f"{name}.pdf","wb") as f:
+    with open(f"{name}s.pdf","wb") as f:
         f.write(img2pdf.convert(glob.glob(f"{name}/*.jpg")))
-    message.reply_document(f"{name}.pdf")
+    message.reply_document(f"{name}s.pdf")
