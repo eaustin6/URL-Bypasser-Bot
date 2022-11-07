@@ -21,6 +21,7 @@ def convertPDF(_, message):
     msg = message.text.split("&")
     data= msg[1].replace("['", "").replace("']", "").replace(";", "").split("', '")
     name = msg[2]
+    os.mkdir(name)
     print("Before", os.listdir())
     print(data, name)
     for _ in data:
