@@ -11,7 +11,7 @@ def save(imgurl, filename):
         handler.write(img_data)
 
 @app.on_message(filters.command('imgtopdf'))
-def convertPDF(_, msg):
+def convertPDF(_, message):
     data= message.text.split()[1]
     name = message.text.split()[2]
     
