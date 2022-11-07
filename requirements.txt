@@ -1,3 +1,5 @@
 pyrogram==1.4
 tgcrypto
 PyBypass
+img2pdf
+requests
