@@ -16,8 +16,8 @@ def convertPDF(_, message):
     name = message.text.split()[2]
     
     try:
-        for _ in list(data):
-            save(_, f"{name}/{_}")
+        for _ in data.replace("['", "").replace("']", "").split("', '"):
+            save(_, f"{name}/{data.index(_)}")
     except:
         message.reply("Please enter valid data")
         
