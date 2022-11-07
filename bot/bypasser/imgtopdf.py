@@ -21,6 +21,6 @@ def convertPDF(_, message):
     except:
         message.reply("Please enter valid data")
         
-    with open(f"{name}.pdf","wb") as f:
+    with open(f"{name}s.pdf","wb") as f:
         f.write(img2pdf.convert(glob.glob(f"{name}/*.jpg")))
     message.reply_document(f"{name}.pdf")
