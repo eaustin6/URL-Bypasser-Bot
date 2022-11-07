@@ -21,7 +21,9 @@ def convertPDF(_, message):
     for _ in data:
         flnm=f"{name}/{data.index(_)}"
         print(flnm)
+        os.mkdir(name)
         save(_, flnm)
+        
     print("After", os.listdir())
     with open(f"{name}.pdf","wb") as f:
         f.write(img2pdf.convert(glob.glob(f"{name}/*.jpg")))
