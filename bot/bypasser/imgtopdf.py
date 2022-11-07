@@ -8,7 +8,7 @@ import os
 
 def save(imgurl, filename):
     img_data = requests.get(imgurl).content
-    with open(filename, 'wb') as handler:
+    with open(filename+".jpg", 'wb') as handler:
         handler.write(img_data)
 
 @app.on_message(filters.command('imgtopdf'))
