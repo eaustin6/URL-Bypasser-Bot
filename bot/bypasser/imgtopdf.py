@@ -1,5 +1,5 @@
 import glob
-import requests
+import urllib
 import img2pdf
 from bot import app
 from pyrogram import filters
@@ -7,9 +7,8 @@ import os
 
 
 def save(imgurl, filename):
-    img_data = requests.get(imgurl).content
-    with open(filename+".jpg", 'wb') as handler:
-        handler.write(img_data)
+    urllib.request.urlretrieve(imgurl, filename+".jpg")
+    
 
 @app.on_message(filters.command('imgtopdf'))
 def convertPDF(_, message):
