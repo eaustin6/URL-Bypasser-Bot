@@ -11,7 +11,6 @@ opener.addheaders = [('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) A
 urllib.request.install_opener(opener)
 
 
-
 def save(imgurl, filename):
     urllib.request.urlretrieve(imgurl, filename+".jpg")
     
@@ -22,14 +21,10 @@ def convertPDF(_, message):
     data= msg[1].replace("['", "").replace("']", "").replace(";", "").split("', '")
     name = msg[2]
     os.mkdir(name)
-    print("Before", os.listdir())
-    print(data, name)
     for _ in data:
         flnm=f"{name}/{data.index(_)}"
-        print(flnm)
         save(_, flnm)
         
-    print("After", os.listdir())
     with open(f"{name}s.pdf","wb") as f:
         f.write(img2pdf.convert(glob.glob(f"{name}/*.jpg")))
     message.reply_document(f"{name}s.pdf")
