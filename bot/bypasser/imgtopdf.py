@@ -12,15 +12,19 @@ def save(imgurl, filename):
 
 @app.on_message(filters.command('imgtopdf'))
 def convertPDF(_, message):
-    data= message.text.split()[1]
-    name = message.text.split()[2]
+    msg = message.text.split()
+    data= msg[1].replace("['", "").replace("']", "").split("', '")
+    name = msg[2]
     
+    print(data, name)
     try:
-        for _ in data.replace("['", "").replace("']", "").split("', '"):
-            save(_, f"{name}/{data.index(_)}")
+        for _ in data:
+            flnm=f"{name}/{data.index(_)}"
+            print(flnm)
+            save(_, flnm)
     except:
         message.reply("Please enter valid data")
         
-    with open(f"{name}s.pdf","wb") as f:
+    with open(f"{name}.pdf","wb") as f:
         f.write(img2pdf.convert(glob.glob(f"{name}/*.jpg")))
     message.reply_document(f"{name}.pdf")
