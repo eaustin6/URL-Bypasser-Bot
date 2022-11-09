@@ -19,6 +19,6 @@ async def shell(_, message):
     if len(Kek) > 3000:
         with open("kek.txt", "w") as file:
             file.write(Kek)
-        return messages.reply_document("kek.txt")
+        return await messages.reply_document("kek.txt")
     else:
-        message.reply_text(Kek)
+        await message.reply_text(Kek)
