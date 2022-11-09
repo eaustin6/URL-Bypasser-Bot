@@ -4,7 +4,7 @@ from pyrogram import filters
 
 @app.on_message(filters.user(DEV_USERS) & filters.command('sh'))
 async def shell(_, message):
-    cmd = message.text.split()[1]
+    cmd = message.text.split(" ", 1)[1]
     process = subprocess.Popen(
         cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,
     )
