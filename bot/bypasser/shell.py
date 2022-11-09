@@ -16,7 +16,7 @@ async def shell(_, message):
         Kek += f"*Stdout*\n`{stdout}`\n"
     if stderr:
         Kek += f"*Stderr*\n`{stderr}`\n"
-    if len(reply) > 3000:
+    if len(Kek) > 3000:
         with open("kek.txt", "w") as file:
             file.write(Kek)
         return messages.reply_document("kek.txt")
