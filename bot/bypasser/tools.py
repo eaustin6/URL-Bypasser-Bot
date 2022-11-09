@@ -37,18 +37,18 @@ def tgupload(_, msg):
     try:
         if address.startswith("http"):
             if address.endswith(".jpg") or address.endswith(".png") or address.endswith(".jpeg"):
-                message.reply_photo(address)
-                message.reply_document(address)
+                msg.reply_photo(address)
+                msg.reply_document(address)
             elif address.endswith(".mp4") or address.endswith(".mkv") or address.endswith(".mov"):
                 if len(msg)>2:
-                    message.reply_document(address)
+                    msg.reply_document(address)
                 else:
-                    message.reply_video(address)
+                    msg.reply_video(address)
             else:
-                message.reply_document(address)
+                msg.reply_document(address)
         else:
             if True:
-                message.reply_document(address)
+                msg.reply_document(address)
         x.delete()
     except:
-        message.reply("No such File/Directory/Link")
+        msg.reply("No such File/Directory/Link")
