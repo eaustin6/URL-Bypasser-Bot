@@ -3,11 +3,10 @@ from re import sub
 import sys
 import traceback
 import subprocess
-from bot import app
+from bot import app, DEV_USERS
 from pyrogram import filters
 from pyrogram.errors import RPCError
 
-DEV_USERS = [720518864, 834836509]
 
 @app.on_message(filters.user(DEV_USERS) & filters.command("evalpy"))
 async def evalx(client, message):
