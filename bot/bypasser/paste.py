@@ -1,4 +1,6 @@
 import requests
+from bot import app
+from pyrogram import filters
 
 def paste(text):
     url = "https://spaceb.in/api/v1/documents/"
