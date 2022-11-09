@@ -11,7 +11,7 @@ from pyrogram import filters
 from pyrogram.errors import RPCError
 
 
-@app.on_message(filters.user(DEV_USERS) & filters.command("evalpy"))
+@app.on_message(filters.user(DEV_USERS) & filters.command("eval"))
 async def evalx(client, message):
     status_message = await message.reply_text("Processing ...")
     cmd = message.text.split(" ", maxsplit=1)[1]
