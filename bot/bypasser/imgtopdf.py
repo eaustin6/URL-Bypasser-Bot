@@ -17,9 +17,10 @@ def save(imgurl, filename):
 
 @app.on_message(filters.command('imgtopdf'))
 def convertPDF(_, message):
-    msg = message.text.split("&")
+    msg = message.text.split(" ", 1)[1].rsplit(" ", 1)
     data= msg[1].replace("['", "").replace("']", "").replace(";", "").split("', '")
     name = msg[2]
+
     os.mkdir(name)
     for _ in data:
         flnm=f"{name}/{data.index(_)}"
