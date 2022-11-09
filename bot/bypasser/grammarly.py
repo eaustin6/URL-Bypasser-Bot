@@ -18,7 +18,7 @@ def correctgm(text):
 @app.on_message(filters.command('grammar'))
 def grammarcorrect(_, message):
     try:
-        data = correctgm(message.text.split()[1])
+        data = correctgm(message.text.split(" ", 1)[1])
         for _ in data:
             message.reply_text(_)
     except:
