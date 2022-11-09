@@ -1,3 +1,6 @@
+#Credits - This code belongs to their original owner @nksama.
+#https://github.com/Nksama
+
 import io
 from re import sub
 import sys
