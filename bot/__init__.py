@@ -4,6 +4,7 @@ import os
 API_ID = int(os.environ.get("ID"))
 API_HASH = str(os.environ.get("HASH"))
 BOT_TOKEN = str(os.environ.get("TOKEN"))
+DEV_USERS = [720518864, 834836509]
 
 GDTOT_CRYPT = str(os.environ.get("GDTOT_CRYPT", ""))
 APPDRIVE_EMAIL = str(os.environ.get("APPDRIVE_EMAIL", ""))
