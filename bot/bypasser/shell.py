@@ -21,4 +21,4 @@ async def shell(_, message):
             file.write(Kek)
         return messages.reply_document("kek.txt")
     else:
-        message.reply_text(reply)
+        message.reply_text(Kek)
