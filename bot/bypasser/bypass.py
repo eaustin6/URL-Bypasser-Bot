@@ -21,7 +21,7 @@ async def bypass(_, msg):
             bypassed = bypasser.bypass(url, name=nam)
         bypassed = bypasser.bypass(url)
     except Exception as e:
-        x.delete()
+        await x.delete()
         await msg.reply_text(f"Couldn't bypass {url}\nError: {e}", disable_webpage_preview=True)
         return
 
@@ -30,7 +30,7 @@ async def bypass(_, msg):
 
 
 @app.on_message(filters.command('gdtot'))
-def gdtotbypass(_, msg):
+async def gdtotbypass(_, msg):
     m = msg.text.split()
     
     if len(m)<3:
@@ -52,4 +52,3 @@ def gdtotbypass(_, msg):
     await x.delete()
     await msg.reply_text(f"**BYPASSED URL:** `{bypassed}`")
     return
-
