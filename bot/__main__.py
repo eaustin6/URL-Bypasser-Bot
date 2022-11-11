@@ -1,4 +1,4 @@
-from bot import app
+from bot import app, SUPPORT_CHAT
 from pyrogram import filters
 from pyrogram.types import Message
 from pyrogram.types import InlineKeyboardButton as Ikb, InlineKeyboardMarkup as Ikm
@@ -17,7 +17,7 @@ async def start(_, message):
 
 def alive():
     app.run()
-    app.send_message(-1001207787457, "I'm alive!")
+    app.send_message(SUPPORT_CHAT, "I'm alive!")
      
   
 if __name__=="__main__":

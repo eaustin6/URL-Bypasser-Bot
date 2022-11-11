@@ -5,25 +5,25 @@ from pyrogram import filters
 
 
 @app.on_message(filters.command('rename'))
-def rename(_, message):
+async def rename(_, message):
     if not message.reply_to_message:
-        message.reply("Please reply to a file/document")
+        await message.reply("Please reply to a file/document")
     try:
         filename = message.text.replace(message.text.split(" ")[0], "")
     except Exception as e:
         print(e)
     reply = message.reply_to_message
     if reply:
-        x = message.reply_text("Downloading.....")
+        x = await message.reply_text("Downloading.....")
         path = reply.download(file_name=filename)
-        x.edit("Uploading.....")
-        message.reply_document(path)
+        await x.edit("Uploading.....")
+        await message.reply_document(path)
         os.remove(path)
 
 
 
 @app.on_message(filters.command("tgupload"))
-def tgupload(_, msg):
+async def tgupload(_, msg):
     if msg.reply_to_message:
         address = msg.reply_to_message.text
         
@@ -31,24 +31,25 @@ def tgupload(_, msg):
         try:
             address = msg.text.split()[1]
         except:
-            return msg.reply_text("Please Reply to a Url")
+            return await msg.reply_text("Please Reply to a Url")
     
-    x = msg.reply_text("Uploading to telegram...")
+    x = await msg.reply_text("Uploading to telegram...")
     try:
         if address.startswith("http"):
             if address.endswith(".jpg") or address.endswith(".png") or address.endswith(".jpeg"):
-                msg.reply_photo(address)
-                msg.reply_document(address)
+                await msg.reply_photo(address)
+                await msg.reply_document(address)
             elif address.endswith(".mp4") or address.endswith(".mkv") or address.endswith(".mov"):
                 if len(msg)>2:
-                    msg.reply_document(address)
+                    await msg.reply_document(address)
                 else:
-                    msg.reply_video(address)
+                    await msg.reply_video(address)
             else:
-                msg.reply_document(address)
+                await msg.reply_document(address)
         else:
             if True:
-                msg.reply_document(address)
-        x.delete()
+                await msg.reply_document(address)
+        await x.delete()
     except:
-        msg.reply("No such File/Directory/Link")
+        await msg.reply("No such File/Directory/Link")
+        return

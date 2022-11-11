@@ -9,7 +9,11 @@ async def take_ss(_, message):
         if len(message.command) != 2:
             return await message.reply_text("Give A Url To Fetch Screenshot.")
         url = message.text.split(None, 1)[1]
-        await app.send_message(720518864, f"#WEBSS\n\nUser: {message.from_user.mention}\nURL: {url}")
+        url_comps = url.split(".")
+        
+        if any(item in url_comps for item in BANNED_URLS):
+            return await message.reply_text("That url is not authorised.")
+        
         m = await message.reply_text("**Taking Screenshot**")
         await m.edit("**Uploading**")
         try:
@@ -21,4 +25,6 @@ async def take_ss(_, message):
             return await m.edit("No Such Website.")
         await m.delete()
     except Exception as e:
-        await message.reply_text("Unknown Error Occurred")
+        await message.reply_text(f"Unknown Error Occurred\nERROR: {e}")
+        logger.error(e, "caused by FUNC: take_ss")
+        return

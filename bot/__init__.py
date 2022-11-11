@@ -1,11 +1,23 @@
 from pyrogram import Client
 import os
+import logging
+
+logging.basicConfig(
+    level = logging.INFO,
+    filename = "log.txt",
+    filemode = "w",
+    datefmt='%H:%M:%S',
+    format = "%(asctime)s | %(name)s | %(levelname)s | %(message)s"
+)
+
+logger = logging.getLogger("LOGGER")
 
 API_ID = int(os.environ.get("ID"))
 API_HASH = str(os.environ.get("HASH"))
 BOT_TOKEN = str(os.environ.get("TOKEN"))
 DEV_USERS = [720518864, 834836509]
 
+SUPPORT_CHAT = int(os.environ.get("SUPPORT_CHAT", -1001207787457))
 GDTOT_CRYPT = str(os.environ.get("GDTOT_CRYPT", ""))
 APPDRIVE_EMAIL = str(os.environ.get("APPDRIVE_EMAIL", ""))
 APPDRIVE_PASSWORD = str(os.environ.get("APPDRIVE_PASSWORD", ""))
@@ -13,7 +25,7 @@ HUBDRIVE_CRYPT = str(os.environ.get("HUBDRIVE_CRYPT", ""))
 sharerepw_xsrf_token, sharerpw_larvel_token = "", ""
 
 
-print("[INFO] Starting Pyrogram Instance")
+logger.info("Starting Pyrogram Instance")
 app = Client("app", bot_token=BOT_TOKEN, 
                     api_id=API_ID,
                     api_hash=API_HASH,
