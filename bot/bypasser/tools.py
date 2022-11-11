@@ -15,7 +15,7 @@ async def rename(_, message):
     reply = message.reply_to_message
     if reply:
         x = await message.reply_text("Downloading.....")
-        path = reply.download(file_name=filename)
+        path = await reply.download(file_name=filename)
         await x.edit("Uploading.....")
         await message.reply_document(path)
         os.remove(path)
@@ -36,10 +36,10 @@ async def tgupload(_, msg):
     x = await msg.reply_text("Uploading to telegram...")
     try:
         if address.startswith("http"):
-            if address.endswith(".jpg") or address.endswith(".png") or address.endswith(".jpeg"):
+            if address.endswith((".jpg", ".png", ".jpeg")):
                 await msg.reply_photo(address)
                 await msg.reply_document(address)
-            elif address.endswith(".mp4") or address.endswith(".mkv") or address.endswith(".mov"):
+            elif address.endswith((".mp4", ".mkv", ".mov")):
                 if len(msg)>2:
                     await msg.reply_document(address)
                 else:
