@@ -8,7 +8,7 @@ async def bypass(_, msg):
     m = msg.text.split()
     
     if len(m)<2:
-        await msg.reply_text("Format: /bypass <url> <name only if required>")
+        await msg.reply_text("Format: /bypass <url> <name only if required>", parse_mode="markdown")
         return
     if len(m)>2:
         nam = m[2]
@@ -22,7 +22,7 @@ async def bypass(_, msg):
         bypassed = bypasser.bypass(url)
     except Exception as e:
         await x.delete()
-        await msg.reply_text(f"Couldn't bypass {url}\nError: {e}", disable_webpage_preview=True)
+        await msg.reply_text(f"Couldn't bypass {url}\nError: {e}")
         return
 
     await x.delete()
@@ -34,7 +34,7 @@ async def gdtotbypass(_, msg):
     m = msg.text.split()
     
     if len(m)<3:
-        await msg.reply_text("Format: /bypass <url> <gdtot crypt>")
+        await msg.reply_text("Format: /bypass <url> <gdtot crypt>", parse_mode="markdown")
         return
     
     url = m[1]
@@ -46,7 +46,7 @@ async def gdtotbypass(_, msg):
         bypassed = bypasser.bypass(url, gdtot_crypt=crypt)
     except Exception as e:
         await x.delete()
-        await msg.reply_text(f"Couldn't bypass {url}\nError: {e}", disable_webpage_preview=True)
+        await msg.reply_text(f"Couldn't bypass {url}\nError: {e}")
         return
 
     await x.delete()

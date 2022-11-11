@@ -39,7 +39,7 @@ async def pastewo(_, msg):
     else:
         m = msg.text.split()
         if len(m)<2:
-            await msg.reply_text("Format: /paste <reply_to_msg/text>")
+            await msg.reply_text("Format: /paste <reply_to_msg/text>", parse_mode="markdown")
         text = m[1]
     
     try:
@@ -49,6 +49,6 @@ async def pastewo(_, msg):
         logger.error(e)
         return
         
-    await msg.reply_text(f"Pasted to **Spacebin**: {pasted}", disable_webpage_preview=True)
+    await msg.reply_text(f"Pasted to **Spacebin**: `{pasted}`")
     await status_msg.delete()
     return 
