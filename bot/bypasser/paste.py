@@ -27,7 +27,7 @@ async def pastewo(_, msg):
             file = reply.document
             
             try:
-                path = file.download()
+                path = await file.download()
                 with open(path) as data:
                     text = data.read()
                     
