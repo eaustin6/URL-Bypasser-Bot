@@ -24,10 +24,9 @@ async def pastewo(_, msg):
             text = msg.reply_to_message.text
         if reply.document and reply.document.file_name.endswith(tuple(SUPPORTED_FILE_TYPES)):
             # any(file_name.endswith(s) for s in SUPPORTED_FILE_TYPES)
-            file = reply.document
             
             try:
-                path = await file.download()
+                path = await reply.download()
                 with open(path) as data:
                     text = data.read()
                     

@@ -1,4 +1,5 @@
 from pyrogram import Client
+from telegraph import Telegraph
 import os
 import logging
 
@@ -18,11 +19,11 @@ BOT_TOKEN = str(os.environ.get("TOKEN"))
 DEV_USERS = [720518864, 834836509]
 
 SUPPORT_CHAT = int(os.environ.get("SUPPORT_CHAT", -1001207787457))
-GDTOT_CRYPT = str(os.environ.get("GDTOT_CRYPT", ""))
-APPDRIVE_EMAIL = str(os.environ.get("APPDRIVE_EMAIL", ""))
-APPDRIVE_PASSWORD = str(os.environ.get("APPDRIVE_PASSWORD", ""))
-HUBDRIVE_CRYPT = str(os.environ.get("HUBDRIVE_CRYPT", ""))
-sharerepw_xsrf_token, sharerpw_larvel_token = "", ""
+
+
+logger.info("Starting Telegraph Instance")
+telegraph = Telegraph()
+telegraph.create_account(short_name="Auto Manga", author_name="AutoMangaBot", author_url="http://t.me/AutoMangaBot")
 
 
 logger.info("Starting Pyrogram Instance")

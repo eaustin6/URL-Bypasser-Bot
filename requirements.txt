@@ -4,3 +4,4 @@ PyBypass
 img2pdf
 requests
 sapling-py
+telegraph
