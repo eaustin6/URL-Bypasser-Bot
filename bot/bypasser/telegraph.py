@@ -28,8 +28,6 @@ async def graphoo(_, msg):
         content = msg.reply_to_message
         x = await msg.reply_text(f"Pasting {content.link} to telegraph!")
         
-        if content.text:
-            text = content.text
             
         if content.document and (content.document.file_size<(10 * 1024**2)):
             
@@ -45,9 +43,12 @@ async def graphoo(_, msg):
                 return
         
         else:
-            await msg.reply_text("Please Reply to a Text or Document")
-            await x.delete()
-            return
+            try:
+                text = content.text
+            except:
+                await msg.reply_text("Please Reply to a Text or Document")
+                await x.delete()
+                return
     
     else:
         x = await msg.reply_text(f"Pasting {msg.link} to telegraph!")
@@ -59,18 +60,10 @@ async def graphoo(_, msg):
             return
         text = m[1]
     
-    
-    try:
-        response = telegraph.create_page(
+    response = telegraph.create_page(
                 title,
-                html_content=text
+                content=text
             )
-    except Exception as e:
-        logger.error(e, "caused by FUNC: graphoo")
-        await msg.reply_text(f"Telegraph is not responding\nERROR: {e}")
-        await x.delete()
-        return
-        
     
     await msg.reply_text("Pasted to [Telegraph](https://graph.org/{})".format(response["path"]))
 
