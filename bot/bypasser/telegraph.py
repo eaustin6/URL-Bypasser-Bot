@@ -35,9 +35,12 @@ async def graphoo(_, msg):
             
             try:
                 path = await content.download()
-                with open(path) as data:
-                    text = data.read()
-                os.remove(path)
+                text = ""
+                with open(path, "rb") as uwu:
+                    kek = uwu.readlines()
+                for __ in kek:
+                    text += __.decode("UTF-8") + "\n"
+                text = text.replace("\n", "<br>")
                 
             except Exception as e:
                 logger.error(e, "caused by FUNC: graphoo")
@@ -60,7 +63,6 @@ async def graphoo(_, msg):
             return
         text = m[1]
     
-    text = text.replace("\n", "<br>")
     
     try:
         response = telegraph.create_page(
