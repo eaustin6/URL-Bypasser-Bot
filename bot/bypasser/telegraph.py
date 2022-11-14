@@ -24,7 +24,7 @@ async def graphoo(_, msg):
             
     if msg.reply_to_message:
         content = msg.reply_to_message
-        x = msg.reply_text(f"Pasting {content.link} to telegraph!")
+        x = await msg.reply_text(f"Pasting {content.link} to telegraph!")
         
         if content.text:
             text = content.text
@@ -40,38 +40,38 @@ async def graphoo(_, msg):
             except Exception as e:
                 logger.error(e, "caused by FUNC: graphoo")
                 await msg.reply_text(f"Sorry some error excured\nERROR: {e}")
-                x.delete()
+                await x.delete()
                 return
         
         else:
             await msg.reply_text("Please Reply to a Text or Document")
-            x.delete()
+            await x.delete()
             return
     
     else:
-        x = msg.reply_text(f"Pasting {msg.link} to telegraph!")
+        x = await msg.reply_text(f"Pasting {msg.link} to telegraph!")
         
         m = msg.text.split()
         if len(m)<2:
             await msg.reply_text("Format: /tgt <reply_to_msg/text>", parse_mode="markdown")
-            x.delete()
+            await x.delete()
             return
         text = m[1]
     
     text = text.replace("\n", "<br>")
     
     try:
-        response = await telegraph.create_page(
+        response = telegraph.create_page(
                 title,
                 html_content=text
             )
     except Exception as e:
         logger.error(e, "caused by FUNC: graphoo")
         await msg.reply_text(f"Telegraph is not responding\nERROR: {e}")
-        x.delete()
+        await x.delete()
         return
         
     
     await msg.reply_text("Pasted to [Telegraph](https://graph.org/{})".format(response["path"]))
 
-    x.delete()
+    await x.delete()
