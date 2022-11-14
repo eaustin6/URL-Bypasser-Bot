@@ -35,12 +35,8 @@ async def graphoo(_, msg):
             
             try:
                 path = await content.download()
-                text = ""
-                with open(path, "rb") as uwu:
-                    kek = uwu.readlines()
-                for __ in kek:
-                    text += __.decode("UTF-8") + "\n"
-                text = text.replace("\n", "<br>")
+                with open(path) as data:
+                    text = data.read()
                 
             except Exception as e:
                 logger.error(e, "caused by FUNC: graphoo")

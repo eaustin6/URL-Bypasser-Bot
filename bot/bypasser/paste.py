@@ -22,7 +22,7 @@ async def pastewo(_, msg):
     if reply:
         if reply.text:
             text = msg.reply_to_message.text
-        if reply.document and (content.document.file_size<(10 * 1024**2)):
+        if reply.document and (reply.document.file_size<(10 * 1024**2)):
             # any(file_name.endswith(s) for s in SUPPORTED_FILE_TYPES)
             
             try:
