@@ -3,18 +3,13 @@ from pyrogram import filters
 import os
 
 
-def convertTelegraph(data, datatype):
-    if datatype==
+def convertTelegraph(data):
     post_content = "".join(f"<img src={link}><br>" for link in data)
     post = telegraph.create_page(
         nam,
         html_content=post_content,
     )
-    try:
-        return post["url"]
-    except:
-        x = convertTelegraph(data, nam=nam)
-        return x
+    return post
 
 
 @app.on_message(filters.command("tgt"))
