@@ -17,11 +17,13 @@ async def graphoo(_, msg):
     """function"""
     
     user = msg.from_user
-        try:
-            title = user.first_name
-        except:
-            title = "@URLBypasserBot"
+    
+    try:
+        title = user.first_name
+    except:
+        title = "@URLBypasserBot"
             
+        
     if msg.reply_to_message:
         content = msg.reply_to_message
         x = await msg.reply_text(f"Pasting {content.link} to telegraph!")
