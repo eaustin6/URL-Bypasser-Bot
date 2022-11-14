@@ -33,8 +33,16 @@ async def graphoo(_, msg):
             
             try:
                 path = await content.download()
-                with open(path) as data:
-                    text = data.read()
+                m_list = None
+                page_content = message.text.split()[1]
+                if not page_content=="":
+                    title = page_content
+                with open(path, "rb") as fd:
+                    m_list = fd.readlines()
+                for m in m_list:
+                    page_content += m.decode("UTF-8") + "\n"
+                os.remove(path)
+                text = page_content.replace("\n", "<br>")
                 
             except Exception as e:
                 logger.error(e, "caused by FUNC: graphoo")
@@ -44,7 +52,7 @@ async def graphoo(_, msg):
         
         else:
             try:
-                text = content.text
+                text = content.text.html.replace("\n", "<br>")
             except:
                 await msg.reply_text("Please Reply to a Text or Document")
                 await x.delete()
@@ -62,7 +70,7 @@ async def graphoo(_, msg):
     
     response = telegraph.create_page(
                 title,
-                content=text
+                html_content=text
             )
     
     await msg.reply_text("Pasted to [Telegraph](https://graph.org/{})".format(response["path"]))
