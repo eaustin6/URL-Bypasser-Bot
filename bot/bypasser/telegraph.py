@@ -34,7 +34,7 @@ async def graphoo(_, msg):
             try:
                 path = await content.download()
                 m_list = None
-                page_content = message.text.split()[1]
+                page_content = msg.text.split()[1]
                 if not page_content=="":
                     title = page_content
                 with open(path, "rb") as fd:
