@@ -5,6 +5,7 @@ import PyBypass as bypasser
 
 @app.on_message(filters.command('bypass'))
 async def bypass(_, msg):
+    nam = None
     m = msg.text.split()
     
     if len(m)<2:
@@ -17,7 +18,7 @@ async def bypass(_, msg):
     x = await msg.reply_text(f"Trying to Bypass __`{url}`__...")
 
     try:
-        if nam:
+        if nam!=None:
             bypassed = bypasser.bypass(url, name=nam)
         bypassed = bypasser.bypass(url)
     except Exception as e:
